@@ -155,28 +155,31 @@ font sizes px
     height:40px;
 }
 
-.meme-image {
+
+.image-container {
+    position:relative;
     margin: 20px 0;
 }
 
-
-/********/
-
-.countClock {
-    display:flex;
-    align-items: center;
+.meme-image {
+    width:100%;
+   
 }
 
-.countClock .count {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background-color: grey;
-    padding:10px;
-    border-radius: 50%;
-    width:30px;
-    height:30px;
-    margin:20px;
-    cursor:pointer;
+.image-container h2 {
+    position: absolute;
+    width:100%;
+    text-align: center;
+    color:#fff;
+    font-size: 40px;
+    font-weight:700;
 }
+
+.image-container h2:first-child {
+    top: 0;
+}
+
+.image-container h2:last-child {
+    bottom:0;
+}
+    
