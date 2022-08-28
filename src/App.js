@@ -4,10 +4,14 @@ import Meme from './components/Meme'
 
 function App() {
 
+    
+
     return (
         <div className="wrapper">
+            
             <Header />
             <Meme />
+            
         </div>
     )
     

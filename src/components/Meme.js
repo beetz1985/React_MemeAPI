@@ -11,44 +11,67 @@ function Meme() {
     //     setState(data.data.memes[randomIndex].url);
     // }
 
+    const [memeData, setMemeImages] = React.useState(data);
 
-    const [state_one, setState_one] = React.useState({
+    const [formState, setFormState] = React.useState({
         topText: "",
         bottomText: "",
         randomImage: ""
     })
 
-    const [state_two, setState_two] = React.useState(data);
+    
+    function handleChange(e) {
+        const {name, value} = e.target;
+        setFormState((s)=>{
+            const obj = {...s}
+            obj[name] = value
+            return obj
+        })
+    }
 
     function getMeme(e) {
         e.preventDefault();
 
-        const memesArray = state_two.data.memes;
+        const memesArray = memeData.data.memes;
         const randomIndex = Math.floor(Math.random() * memesArray.length);
 
-        setState_one((s)=>{
+        setFormState((s)=>{
             return {
                 ...s,
                 randomImage: memesArray[randomIndex].url
             }
         })
-        
-
-
     }
 
     return (
         <main className="main-content">
+
             <form className="meme-form">
-                <input className="meme-start" type="text" placeholder="Top Text"/>
-                <input className="meme-end" type="text" placeholder="Bottom Text"/>
+                <input 
+                    name="topText" 
+                    value={formState.topText} 
+                    className="meme-start" 
+                    type="text" 
+                    placeholder="Top Text" 
+                    onChange={handleChange}
+                />
+                <input 
+                    name="bottomText" 
+                    value={formState.bottomText} 
+                    className="meme-end" 
+                    type="text" 
+                    placeholder="Bottom Text" 
+                    onChange={handleChange}
+                />
                 <button onClick={getMeme}>Get New Meme Image &#128444;&#65039;</button>
             </form>
+
             <div className="image-container">
-                <h2>{state_one.topText}</h2>
-                {(state_one.randomImage) ? <img className="meme-image" src={state_one.randomImage} alt="img"/> : ''}
-                <h2>{state_one.bottomText}</h2>
+                {formState.randomImage !== "" && <h2>{formState.topText}</h2>}
+                {(formState.randomImage) ? <img className="meme-image" src={formState.randomImage} alt="img"/> : ''}
+                {formState.randomImage !== "" && <h2>{formState.bottomText}</h2>}
             </div>
+
         </main>
     )
 }

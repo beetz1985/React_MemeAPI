@@ -171,15 +171,26 @@ font sizes px
     width:100%;
     text-align: center;
     color:#fff;
-    font-size: 40px;
+    font-size: 50px;
     font-weight:700;
+    text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0 2px 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    -2px 0 0 #000,
+    2px 2px 5px #000;
 }
 
 .image-container h2:first-child {
-    top: 0;
+    top: 20px;
 }
 
 .image-container h2:last-child {
-    bottom:0;
+    bottom:20px;
 }
     
+
