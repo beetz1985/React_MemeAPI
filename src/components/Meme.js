@@ -4,11 +4,12 @@ import React from 'react';
 function Meme() {
 
     const [memeData, setMemeData] = React.useState([]);
-    
+
     React.useEffect(()=>{
         fetch(`https://api.imgflip.com/get_memes`)
         .then(res => res.json())
         .then(data => setMemeData(data.data.memes))
+        
     }, [])
 
     const [formState, setFormState] = React.useState({
@@ -16,7 +17,7 @@ function Meme() {
         bottomText: "",
         randomImage: ""
     })
-    
+
     function handleChange(e) {
         const {name, value} = e.target;
         setFormState((s)=>{
